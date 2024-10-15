@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import VideoCard from '../Components/VideoCard';
+import apiUrl from '../Components/Login'
 
 const Home = ({ onVideoSubmit }) => {
     const [videos, setVideos] = useState([]);    
@@ -8,7 +9,7 @@ const Home = ({ onVideoSubmit }) => {
     useEffect(() => {
         const fetchVideos = async () =>{
             try {
-                const response = await axios.get('/api/videoRoutes')
+                const response = await axios.get(`${apiUrl}/api/videoRoutes`)
                 //Guarda los videos en el estado
                 setVideos(response.data)
                 console.log("Videos in Home:", response.data); 

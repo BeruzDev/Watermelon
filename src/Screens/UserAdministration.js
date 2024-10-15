@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { apiUrl } from '../Components/Login';
 
 const UserAdministration = () => {
     const [videos, setVideos] = useState([]);
@@ -9,7 +10,7 @@ const UserAdministration = () => {
     useEffect(() => {
         const fetchVideos = async ()  => {
             try {
-                const response = await axios.get('/api/videoRoutes')
+                const response = await axios.get(`${apiUrl}/api/videoRoutes`)
                 //Guardar los videos en el estado
                 setVideos(response.data)
                 console.log('Videos obtenidos: ', response.data)
@@ -24,7 +25,7 @@ const UserAdministration = () => {
     useEffect(() => {
         const fetchUsuarios = async () => {
             try {
-                const response = await axios.get('/api/users/getUsers')
+                const response = await axios.get(`${apiUrl}/api/users/getUsers`)
                 //Ocultar el usuario Administrador para no borrarlo por error
                 //username: RollerBoy
                 //isAdmin: true
@@ -41,7 +42,7 @@ const UserAdministration = () => {
     //Borrar video
     const deleteVideo = async (id) => {
         try {
-            await axios.delete(`/api/videoRoutes/${id}`)
+            await axios.delete(`${apiUrl}/api/videoRoutes/${id}`)
             //Actualizar la lista de videos
             setVideos(videos.filter(video => video._id !== id))
             console.log('Video eliminado.')
@@ -54,7 +55,7 @@ const UserAdministration = () => {
     const deleteUsuario = async (id) => {
         console.log('ID del usuario a eliminar: ', id)
         try {
-            await axios.delete(`/api/users/${id}`)
+            await axios.delete(`${apiUrl}/api/users/${id}`)
             //Actualizar la lista de usuarios
             setUsuarios(usuarios.filter(usuario => usuario._id !== id))
             console.log('Usuario eliminado.')

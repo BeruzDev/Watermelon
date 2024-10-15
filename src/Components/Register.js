@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { apiUrl } from './Login'
+
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -11,13 +13,13 @@ const Register = () => {
 
     const navigate = useNavigate()
 
-    //Funcion que se ejecuta al enviar el formulario
+    //Función que se ejecuta al enviar el formulario
     const handleSubmit = async (e) =>{
         e.preventDefault()
 
         try {
             //Enviar los datos al backend usando
-            const response = await axios.post('/api/users/register', {
+            const response = await axios.post(`${apiUrl}/api/users/register`, {
                 username, 
                 email, 
                 password

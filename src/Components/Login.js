@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+export const apiUrl = process.env.REACT_APP_API_URL;
+
 
 const Login = ({ setIsAdmin }) => {
     const [username, setUsername] = useState('');
@@ -11,7 +13,7 @@ const Login = ({ setIsAdmin }) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('/api/users/login', { username, password }) 
+            const response = await axios.post(`${apiUrl}/api/users/login`, { username, password }) 
             const { token, user } = response.data
             const isAdmin = user.isAdmin
             console.log(response.data)
