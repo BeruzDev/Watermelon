@@ -9,7 +9,7 @@ const Home = ({ onVideoSubmit }) => {
     useEffect(() => {
         const fetchVideos = async () =>{
             try {
-                const response = await axios.get(`${apiUrl}/api/videoRoutes`)
+                const response = await axios.get(`${apiUrl}/api/videoRoutes/all`)
                 //Guarda los videos en el estado
                 setVideos(response.data)
                 console.log("Videos in Home:", response.data); 
