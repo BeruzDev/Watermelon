@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { apiUrl } from '../Components/Login';
+export const apiUrl = process.env.REACT_APP_API_URL;
+
 
 const UserAdministration = () => {
     const [videos, setVideos] = useState([]);
@@ -10,7 +11,7 @@ const UserAdministration = () => {
     useEffect(() => {
         const fetchVideos = async ()  => {
             try {
-                const response = await axios.get(`${apiUrl}/api/videoRoutes`)
+                const response = await axios.get(`${apiUrl}/api/videoRoutes/`)
                 //Guardar los videos en el estado
                 setVideos(response.data)
                 console.log('Videos obtenidos: ', response.data)
@@ -25,7 +26,7 @@ const UserAdministration = () => {
     useEffect(() => {
         const fetchUsuarios = async () => {
             try {
-                const response = await axios.get(`${apiUrl}/api/users/getUsers`)
+                const response = await axios.get(`${apiUrl}/api/users/getUsers/`)
                 //Ocultar el usuario Administrador para no borrarlo por error
                 //username: RollerBoy
                 //isAdmin: true

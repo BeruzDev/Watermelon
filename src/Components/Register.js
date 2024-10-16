@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { apiUrl } from './Login'
+export const apiUrl = process.env.REACT_APP_API_URL;
+
 
 
 const Register = () => {
@@ -19,7 +20,7 @@ const Register = () => {
 
         try {
             //Enviar los datos al backend usando
-            const response = await axios.post(`${apiUrl}/api/users/register`, {
+            const response = await axios.post(`${apiUrl}/api/users/register/`, {
                 username, 
                 email, 
                 password

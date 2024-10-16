@@ -13,7 +13,7 @@ const Login = ({ setIsAdmin }) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`${apiUrl}/api/users/login`, { username, password }) 
+            const response = await axios.post(`${apiUrl}/api/users/login/`, { username, password }) 
             const { token, user } = response.data
             const isAdmin = user.isAdmin
             console.log(response.data)
