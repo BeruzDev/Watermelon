@@ -1,9 +1,9 @@
 import axios from 'axios'
-import apiUrl from '../Components/Login'
+export const apiUrl = process.env.REACT_APP_API_URL;
 
 const saveVideo = async (videoData, onVideoSubmit) => {
     try {
-        const response = await axios.post(`${apiUrl}/api/videoRoutes`, videoData)
+        const response = await axios.post(`${apiUrl}/api/videoRoutes/`, videoData)
         onVideoSubmit(response.data)
         console.log('Video guardado con éxito: ', response.data)
     } catch (error) {
